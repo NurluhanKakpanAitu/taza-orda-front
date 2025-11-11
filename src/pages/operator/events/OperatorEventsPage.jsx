@@ -15,6 +15,15 @@ import {
 } from '../../../api/dataService';
 import { uploadEventCover } from '../../../api/reportService';
 
+const resolveCoverUrl = (response) =>
+  response?.url ??
+  response?.fileUrl ??
+  response?.photoUrl ??
+  response?.data?.url ??
+  response?.data?.fileUrl ??
+  response?.data?.photoUrl ??
+  null;
+
 const OperatorEventsPage = () => {
   const [events, setEvents] = useState([]);
   const [districts, setDistricts] = useState([]);
@@ -160,7 +169,7 @@ const OperatorEventsPage = () => {
     }
     try {
       const response = await uploadEventCover(file);
-      const fileUrl = response?.url ?? response?.fileUrl ?? null;
+      const fileUrl = resolveCoverUrl(response);
       if (fileUrl) {
         setFormValues((prev) => (prev ? { ...prev, coverUrl: fileUrl } : prev));
         setSelectedEvent((prev) => (prev ? { ...prev, coverUrl: fileUrl } : prev));

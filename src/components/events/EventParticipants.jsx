@@ -11,8 +11,7 @@ const EventParticipants = ({ participants = [], onCheckIn, onComplete, actionLoa
           participants.map((participant) => (
             <li key={participant.id}>
               <div>
-                <p className="participant-name">{participant.name}</p>
-                <p className="participant-meta">{participant.phone}</p>
+                <p className="participant-name">{participant.userName}</p>
               </div>
               <div className="participant-actions">
                 <button

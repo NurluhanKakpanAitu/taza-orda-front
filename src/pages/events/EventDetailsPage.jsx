@@ -213,7 +213,6 @@ const EventDetailsPage = () => {
               <li key={participant.id || participant.userId}>
                 <div>
                   <p className="participant-name">{participant.userName || 'Неизвестный участник'}</p>
-                  {participant.status && <p className="participant-meta">{statusLabels[participant.status] ?? participant.status}</p>}
                 </div>
               </li>
             ))}
